@@ -1,6 +1,6 @@
 Package: s3io
 Title: AWS S3 I/O Utilities
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: person("Murat", "Tasan", email = "mmuurr@gmail.com", role = c("aut", "cre"))
 Description: Permits some forms of (in)direct reading and writing from/to files on AWS S3 buckets.
 URL: https://github.com/mmuurr/s3io-R-Package
