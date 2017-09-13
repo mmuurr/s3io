@@ -4,5 +4,5 @@ import(futile.logger)
 ##exportPattern("^[^\\.]")
 
 export(s3io_read)
-gexport(s3io_write)
+export(s3io_write)
 
