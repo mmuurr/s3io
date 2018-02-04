@@ -1,0 +1,8 @@
+reference:
+ - title: "I/O functions"
+   contents:
+    - s3io_read
+    - s3io_write
+ - title: "Non-exported functions"
+   contents:
+    - try_file_remove
