@@ -32,8 +32,11 @@ Here's an example session where the iris table is first written to, then read in
 > s3io_write(iris, bucket = "bktname", key = "the/key.csv", readr::write_csv, col_names = FALSE)
 > foo <- s3io_read("bktname", "the/key.csv", readr::read_csv, col_names = FALSE)
 ```
-In the example, `readr::read_csv()` and `readr::write_csv()` serve as the underlying readre and writer functions.
-Other common readers and writers might be `write.csv()`, `read.delim()`, `write.table()`, `readRDS()`, `saveRDS()`, etc.
+In the example, `readr::read_csv()` and `readr::write_csv()` serve as the underlying reader and writer functions.
+`col_names = FALSE` is one of the optional arguments passed on to those underlying functions.
+
+Other common readers and writers might be `base::write.csv()`, `base::read.delim()`, `base::write.table()`, `base::readRDS()`, `base::saveRDS()`, etc.
+
 In cases where a reader or writer doesn't meet the required signature, the user can create her own wrapper, like so:
 ```R
 ## this function can't be used directly by s3io_write:
