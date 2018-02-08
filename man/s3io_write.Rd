@@ -4,8 +4,8 @@
 \alias{s3io_write}
 \title{Write a file to AWS S3}
 \usage{
-s3io_write(obj, bucket, key, writefun, ..., localfile = tempfile(),
-  rm_localfile = TRUE)
+s3io_write(obj, bucket, key, writefun, ..., .localfile = tempfile(),
+  .rm_localfile = TRUE, .put_object_args = list())
 }
 \arguments{
 \item{obj}{The object to write.}
@@ -19,9 +19,12 @@ The function's signature should look like \code{writefun(obj, file, ...)}.}
 
 \item{...}{Additional arguments passed on to \code{writefun}.}
 
-\item{localfile}{[string] The local filepath for the initial write-to-disk.}
+\item{.localfile}{[string] The local filepath for the initial write-to-disk.}
 
-\item{rm_localfile}{[boolean] Remove \code{localfile} once the copy-to-S3 is complete?}
+\item{.rm_localfile}{[boolean] Remove \code{localfile} once the copy-to-S3 is complete?}
+
+\item{.put_object_args}{[list] Additional optional args passed on to \code{awscli::s3api_put_object}.
+A common option you may want to specify, e.g., is content-type: \code{.put_object_args = list("content-type" = "application/json")}.}
 }
 \value{
 The returned value from \code{writefun}.

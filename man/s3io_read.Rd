@@ -4,8 +4,8 @@
 \alias{s3io_read}
 \title{Read a file in from AWS S3}
 \usage{
-s3io_read(bucket, key, readfun, ..., localfile = tempfile(),
-  rm_localfile = TRUE)
+s3io_read(bucket, key, readfun, ..., .localfile = tempfile(),
+  .rm_localfile = TRUE, .get_object_args = list())
 }
 \arguments{
 \item{bucket}{[string] AWS S3 bucket name.}
@@ -17,10 +17,12 @@ The function's signature should look like \code{readfun(file, ...)}.}
 
 \item{...}{Additional arguments forwarded on to \code{readfun}.}
 
-\item{localfile}{[string] The local filepath of the downloaded file.}
+\item{.localfile}{[string] The local filepath of the downloaded file.}
 
-\item{rm_localfile}{[boolean] Should the local filepath be deleted once it has been read?
+\item{.rm_localfile}{[boolean] Should the local filepath be deleted once it has been read?
 If \code{rm_localfile = TRUE}, then the read operation should read the entire file into memory.}
+
+\item{.get_object_args}{[list] Additional optional args passed on to \code{awscli::s3api_get_object}.}
 }
 \value{
 The returned value from \code{readfun}.

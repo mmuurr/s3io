@@ -85,8 +85,8 @@
 
 
 
-    <pre class="usage"><span class='fu'>s3io_read</span>(<span class='no'>bucket</span>, <span class='no'>key</span>, <span class='no'>readfun</span>, <span class='no'>...</span>, <span class='kw'>localfile</span> <span class='kw'>=</span> <span class='fu'>tempfile</span>(),
-  <span class='kw'>rm_localfile</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>s3io_read</span>(<span class='no'>bucket</span>, <span class='no'>key</span>, <span class='no'>readfun</span>, <span class='no'>...</span>, <span class='kw'>.localfile</span> <span class='kw'>=</span> <span class='fu'>tempfile</span>(),
+  <span class='kw'>.rm_localfile</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>.get_object_args</span> <span class='kw'>=</span> <span class='fu'>list</span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -109,13 +109,17 @@ The function's signature should look like <code>readfun(file, ...)</code>.</p></
       <td><p>Additional arguments forwarded on to <code>readfun</code>.</p></td>
     </tr>
     <tr>
-      <th>localfile</th>
+      <th>.localfile</th>
       <td><p>[string] The local filepath of the downloaded file.</p></td>
     </tr>
     <tr>
-      <th>rm_localfile</th>
+      <th>.rm_localfile</th>
       <td><p>[boolean] Should the local filepath be deleted once it has been read?
 If <code>rm_localfile = TRUE</code>, then the read operation should read the entire file into memory.</p></td>
+    </tr>
+    <tr>
+      <th>.get_object_args</th>
+      <td><p>[list] Additional optional args passed on to <code><a href='http://www.rdocumentation.org/packages/awscli/topics/s3api_get_object'>awscli::s3api_get_object</a></code>.</p></td>
     </tr>
     </table>
     

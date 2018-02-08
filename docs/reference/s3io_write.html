@@ -85,8 +85,8 @@
 
 
 
-    <pre class="usage"><span class='fu'>s3io_write</span>(<span class='no'>obj</span>, <span class='no'>bucket</span>, <span class='no'>key</span>, <span class='no'>writefun</span>, <span class='no'>...</span>, <span class='kw'>localfile</span> <span class='kw'>=</span> <span class='fu'>tempfile</span>(),
-  <span class='kw'>rm_localfile</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>s3io_write</span>(<span class='no'>obj</span>, <span class='no'>bucket</span>, <span class='no'>key</span>, <span class='no'>writefun</span>, <span class='no'>...</span>, <span class='kw'>.localfile</span> <span class='kw'>=</span> <span class='fu'>tempfile</span>(),
+  <span class='kw'>.rm_localfile</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>.put_object_args</span> <span class='kw'>=</span> <span class='fu'>list</span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -113,12 +113,17 @@ The function's signature should look like <code>writefun(obj, file, ...)</code>.
       <td><p>Additional arguments passed on to <code>writefun</code>.</p></td>
     </tr>
     <tr>
-      <th>localfile</th>
+      <th>.localfile</th>
       <td><p>[string] The local filepath for the initial write-to-disk.</p></td>
     </tr>
     <tr>
-      <th>rm_localfile</th>
+      <th>.rm_localfile</th>
       <td><p>[boolean] Remove <code>localfile</code> once the copy-to-S3 is complete?</p></td>
+    </tr>
+    <tr>
+      <th>.put_object_args</th>
+      <td><p>[list] Additional optional args passed on to <code><a href='http://www.rdocumentation.org/packages/awscli/topics/s3api_put_object'>awscli::s3api_put_object</a></code>.
+A common option you may want to specify, e.g., is content-type: <code>.put_object_args = list("content-type" = "application/json")</code>.</p></td>
     </tr>
     </table>
     
