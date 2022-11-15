@@ -4,28 +4,38 @@
 \alias{s3io_read}
 \title{Read a file in from AWS S3}
 \usage{
-s3io_read(bucket, key, readfun, ..., .localfile = tempfile(),
-  .rm_localfile = TRUE, .get_object_args = list())
+s3io_read(
+  bucket,
+  key,
+  readfun,
+  ...,
+  .localfile = fs::file_temp(),
+  .rm_localfile = TRUE,
+  .opts = NULL
+)
 }
 \arguments{
-\item{bucket}{[string] AWS S3 bucket name.}
+\item{bucket}{<chr(1)> AWS S3 bucket name.}
 
-\item{key}{[string] AWS S3 object key.}
+\item{key}{<chr(1)> AWS S3 object key.}
 
-\item{readfun}{[function] A read function where the first argument is a filepath.
+\item{readfun}{<function> A read function where the first argument is a filepath.
 The function's signature should look like \code{readfun(file, ...)}.}
 
 \item{...}{Additional arguments forwarded on to \code{readfun}.}
 
-\item{.localfile}{[string] The local filepath of the downloaded file.}
+\item{.localfile}{<chr(1)> The local filepath of the downloaded file.}
 
-\item{.rm_localfile}{[boolean] Should the local filepath be deleted once it has been read?
+\item{.rm_localfile}{<lgl(1)> Should the local filepath be deleted once it has been read?
 If \code{rm_localfile = TRUE}, then the read operation should read the entire file into memory.}
 
-\item{.get_object_args}{[list] Additional optional args passed on to \code{awscli::s3api_get_object}.}
+\item{.opts}{<dict> AWS CLI additional --opts, if not the default (from {awscli2}).}
 }
 \value{
 The returned value from \code{readfun}.
+}
+\description{
+Read a file in from AWS S3
 }
 \examples{
 \dontrun{

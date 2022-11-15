@@ -4,30 +4,41 @@
 \alias{s3io_write}
 \title{Write a file to AWS S3}
 \usage{
-s3io_write(obj, bucket, key, writefun, ..., .localfile = tempfile(),
-  .rm_localfile = TRUE, .put_object_args = list())
+s3io_write(
+  obj,
+  bucket,
+  key,
+  writefun,
+  ...,
+  .localfile = fs::file_temp(),
+  .rm_localfile = TRUE,
+  .opts = NULL
+)
 }
 \arguments{
-\item{obj}{The object to write.}
+\item{obj}{<anything> The object to write.}
 
-\item{bucket}{[string] AWS S3 bucket name.}
+\item{bucket}{<chr(1)> AWS S3 bucket name.}
 
-\item{key}{[string] AWS S3 object key.}
+\item{key}{<chr(1)> AWS S3 object key.}
 
-\item{writefun}{[function] A write function where the first argument is the object to write and the second argument is a filepath.
+\item{writefun}{<function> A write function where the first argument is the object to write and the second argument is a filepath.
 The function's signature should look like \code{writefun(obj, file, ...)}.}
 
 \item{...}{Additional arguments passed on to \code{writefun}.}
 
-\item{.localfile}{[string] The local filepath for the initial write-to-disk.}
+\item{.localfile}{<chr(1)> The local filepath for the initial write-to-disk.}
 
-\item{.rm_localfile}{[boolean] Remove \code{localfile} once the copy-to-S3 is complete?}
+\item{.rm_localfile}{<lgl(1)> Remove \code{localfile} once the copy-to-S3 is complete?}
 
-\item{.put_object_args}{[list] Additional optional args passed on to \code{awscli::s3api_put_object}.
-A common option you may want to specify, e.g., is content-type: \code{.put_object_args = list("content-type" = "application/json")}.}
+\item{.opts}{<dict> Additional --opts for the AWS CLI `aws s3api put-object` command.
+A common option you may want to specify, e.g., is content-type: \code{.opts = list("content-type" = "application/json")}.}
 }
 \value{
 The returned value from \code{writefun}.
+}
+\description{
+Write a file to AWS S3
 }
 \examples{
 \dontrun{

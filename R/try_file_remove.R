@@ -4,11 +4,10 @@
 #' 
 #' @return \code{TRUE} if the removal was successfuly, \code{FALSE} otherwise.
 try_file_remove <- function(filepath) {
-    flog.debug("removing %s", filepath)
-    tryCatch({
-        file.remove(filepath)
-        TRUE
-    }, error = function(e) {
-        FALSE
-    })
+  tryCatch({
+    fs::file_delete(filepath)
+    TRUE
+  }, error = function(e) {
+    FALSE
+  })
 }
