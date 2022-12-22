@@ -1,18 +1,19 @@
 Package: s3io
 Title: AWS S3 I/O Utilities
-Version: 2.0.1
+Version: 2.1.0
 Authors@R: person("Murat", "Tasan", email = "mmuurr@gmail.com", role = c("aut", "cre"))
 Description: Permits some forms of (in)direct reading and writing from/to files on AWS S3 buckets.
 BugReports: https://github.com/mmuurr/s3io/issues
 Depends: R (>= 3.3.3)
 Imports: 
     awscli2 (>= 0.0.3),
-    fs (>= 1.5.2)
+    fs (>= 1.5.2),
+    rlang (>= 1.0.6)
 Suggests: 
     readr,
     testthat (>= 3.0.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
 Config/testthat/edition: 3

@@ -20,16 +20,17 @@
 s3io_write <- function(obj, bucket, key,
                        writefun, ...,
                        .localfile = fs::file_temp(), .rm_localfile = TRUE,
-                       .opts = NULL) {
+                       .aws_config = NULL, .put_object_opts = NULL, .opts = .aws_config) {
   if (isTRUE(.rm_localfile)) on.exit(try_file_remove(.localfile), add = TRUE)
   retval <- withVisible(writefun(obj, .localfile, ...))
   retval <- if (isTRUE(retval$visible)) retval$value else invisible(retval$value)
-  awscli2::awscli(
+  rlang::inject(awscli2::awscli(
     c("s3api", "put-object"),
     "--bucket" = bucket,
     "--key" = key,
     "--body" = .localfile,
-    .config = .opts
-  )
+    !!!.put_object_opts,
+    .config = .aws_config
+  ))
   retval
 }

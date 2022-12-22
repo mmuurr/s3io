@@ -12,7 +12,9 @@ s3io_write(
   ...,
   .localfile = fs::file_temp(),
   .rm_localfile = TRUE,
-  .opts = NULL
+  .aws_config = NULL,
+  .put_object_opts = NULL,
+  .opts = .aws_config
 )
 }
 \arguments{
